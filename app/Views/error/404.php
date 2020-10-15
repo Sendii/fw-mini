@@ -5,6 +5,6 @@
 	<link rel="stylesheet" href="<?= $GLOBALS['path'] ?>/css/style.css">
 </head>
 <body>
-	ini home
+	Maaf controller yang anda cari tidak ditemukan
 </body>
 </html>

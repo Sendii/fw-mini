@@ -9,13 +9,16 @@ class Route{
 	public function __construct(){
 		if (isset($_GET['url'])) {
 			$url = explode('/', filter_var( trim( $_GET['url'] ), FILTER_SANITIZE_URL ));
+			$url[0] = $url[0].'Controller';
+		}else{
+			$url[0] = 'home';
 		}
-
-		$url[0] = $url[0].'Controller';
 
 		//ngecek file controller ada atau nggak ada
 		if (file_exists('../app/controllers/'. $url[0]. '.php')) {
 			$this->controller = $url[0];
+		}else{
+			return require_once '../app/Views/error/404.php';
 		}
 
 		require_once '../app/controllers/'. $this->controller. '.php';
