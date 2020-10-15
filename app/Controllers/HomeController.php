@@ -10,13 +10,20 @@ class HomeController extends Controller{
 	// 	$user = $this->model('User');
 	// 	return $this->view('home', ['nama' => $user->name, 'umur' => $user->umur]);		
 	// }
+	public function methodNotFound(){
+		return $this->view('error/404-method');
+	}
+
+	public function controllerNotFound(){
+		return $this->view('error/404-controller');
+	}
 
 	public function index(){
 		return $this->view('home');
 	}
 
-	public function user(){
-		echo "ea";
+	public function profile($name='', $umur=''){
+		echo 'nama anda adalah: '.$name.$umur;
 	}
 }
 
