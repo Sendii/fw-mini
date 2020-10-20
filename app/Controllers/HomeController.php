@@ -25,6 +25,11 @@ class HomeController extends Controller{
 	public function profile($name='', $umur=''){
 		echo 'nama anda adalah: '.$name.$umur;
 	}
+
+	public function getusers(){
+		$users = $this->model('User')->index();
+		return $this->view('list-user', ['users' => $users]);
+	}
 }
 
 ?>

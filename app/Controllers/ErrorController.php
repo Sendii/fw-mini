@@ -1,7 +1,7 @@
 <?php
 
 class ErrorController extends Controller{
-	public function methodNotFound(){
-		return $this->view('error/404-method');
+	public function controllerNotFound(){
+		return $this->view('error/404-controller');
 	}
 }
