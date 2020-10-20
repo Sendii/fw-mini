@@ -6,7 +6,7 @@ class Database{
 
 	public function __construct(){
 		$this->mysqli = new mysqli('localhost', 'root', '', 'mini-fw') or die('ada error koneksi');
-	}
+	}	
 
 	public static function getInstance(){
 		if (!isset(self::$_instance)) {
@@ -25,6 +25,8 @@ class Database{
 
 		return $reply;
 	}
+
+
 }
 
 ?>
