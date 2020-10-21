@@ -26,6 +26,33 @@ class Database{
 		return $reply;
 	}
 
+	public function edit($table, $id){
+		$reply = [];
+		$query = "SELECT * FROM $table WHERE id = $id";
+		$result = $this->mysqli->query($query);
+
+		while ($row = $result->fetch_assoc())
+			$reply[] = $row;
+
+		return $reply;
+	}
+
+	public function save($table, $data){
+		$arr = [];
+		array_push($arr, $data[0], $data[1]);
+		$str = "'" . implode("','", $arr) . "'";
+		
+		$query = "INSERT INTO $table (nama, jenkel) VALUES ($str) ";
+		$result = $this->mysqli->query($query);
+
+		if ($result === true) {
+			echo "success";
+		}else{
+			echo $this->mysqli->error;
+		}
+
+	}
+
 
 }
 

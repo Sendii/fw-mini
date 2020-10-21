@@ -14,5 +14,13 @@ class User extends Model{
 	public function index(){
 		return $this->_db->index($this->_namaTable);
 	}
+
+	public function edit($id){
+		return $this->_db->edit($this->_namaTable, $id);
+	}
+
+	public function save($data){
+		return $this->_db->save($this->_namaTable, $data);
+	}
 }
 ?>
