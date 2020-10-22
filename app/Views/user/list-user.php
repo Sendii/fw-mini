@@ -15,8 +15,10 @@
 			<div class="shadow card-body">
 				<h3>Daftar User</h3>
 				<?php if (isset($_SESSION["message"])): ?>
-					<div class="alert alert-info my-3" id="alert-message">
-						<?php echo $_SESSION["message"]; ; ?>
+					<div class="alert alert-info my-3" id="alert-message" style="text-align: center;">
+						<b>
+							<?php echo $_SESSION["message"]; ; ?>
+						</b>
 					</div>
 				<?php endif ?>
 				<table class="table table-bordered table-hover">
@@ -30,25 +32,31 @@
 					</thead>
 					<tbody>
 						<?php $i = 0; ?>
-						<?php foreach ($data['users'] as $user): ?>
-							<?php $i++; ?>
-							<tr>
-								<th><?php echo $i; ?></th>
-								<td><?php echo $user['nama']; ?></td>
-								<td><?php echo $user['jenkel']; ?></td>
-								<td align="center">
-									<a class="btn btn-outline-primary btn-sm" href="detail/<?php echo $user['id']; ?>">
-										Detail
-									</a>
-									<a class="btn btn-outline-warning btn-sm" href="edit/<?php echo $user['id']; ?>">
-										Edit
-									</a>
-									<a class="btn btn-outline-danger btn-sm" href="delete/<?php echo $user['id']; ?>">
-										Delete
-									</a>
-								</td>
+						<?php if (count($data['users']) > 0): ?>
+							<?php foreach ($data['users'] as $user): ?>
+								<?php $i++; ?>
+								<tr>
+									<th><?php echo $i; ?></th>
+									<td><?php echo $user['nama']; ?></td>
+									<td><?php echo ($user['jenkel'] == "L" ? 'Laki-laki' : 'Perempuan'); ?></td>
+									<td align="center">
+										<a class="btn btn-outline-primary btn-sm" href="detail/<?php echo $user['id']; ?>">
+											Detail
+										</a>
+										<a class="btn btn-outline-warning btn-sm" href="edit/<?php echo $user['id']; ?>">
+											Edit
+										</a>
+										<a class="btn btn-outline-danger btn-sm" href="delete/<?php echo $user['id']; ?>">
+											Delete
+										</a>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						<?php else: ?>
+							<tr align="center">
+								<td colspan="4">Tidak ada data</td>
 							</tr>
-						<?php endforeach; ?>
+						<?php endif ?>						
 					</table>
 				</div>
 			</div>

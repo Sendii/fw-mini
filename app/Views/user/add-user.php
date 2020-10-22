@@ -24,7 +24,7 @@
 							<option value="P">Perempuan</option>
 						</select>
 					</div>
-					<button type="submit" id="saveData" class="btn btn-primary">Submit</button>
+					<button type="submit" id="saveData" class="btn btn-outline-primary btn-sm">Submit</button>
 				</form>
 			</div>
 		</div>

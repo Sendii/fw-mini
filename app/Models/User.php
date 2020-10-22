@@ -22,5 +22,13 @@ class User extends Model{
 	public function save($data){
 		return $this->_db->save($this->_namaTable, $data);
 	}
+
+	public function update($id, $data){
+		return $this->_db->update($this->_namaTable, $id, $data);
+	}
+
+	public function delete($id){
+		return $this->_db->delete($this->_namaTable, $id);
+	}
 }
 ?>

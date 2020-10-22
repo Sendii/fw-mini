@@ -26,7 +26,7 @@
 								<option value="P" <?php echo $jenkel == "P" ? 'selected' : '' ?> >Perempuan</option>
 							</select>
 						</div>
-						<button type="submit" id="saveData" class="btn btn-primary">Back</button>
+						<a href="../" class="btn btn-outline-primary btn-sm">Back</a>
 					</form>
 				</div>
 			</div>

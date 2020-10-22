@@ -15,9 +15,15 @@ class Database{
 		return self::$_instance;
 	}
 
+	public function query($q=''){
+		if ($q == 'select') {
+			return "SELECT * FROM ";
+		}
+	}
+
 	public function index($table){
 		$reply = [];
-		$query = "SELECT * FROM $table";
+		$query = $this->query('select')."$table ORDER BY id DESC";
 		$result = $this->mysqli->query($query);
 
 		while ($row = $result->fetch_assoc())
@@ -28,7 +34,7 @@ class Database{
 
 	public function edit($table, $id){
 		$reply = [];
-		$query = "SELECT * FROM $table WHERE id = $id";
+		$query = $this->query('select')."$table WHERE id = $id";
 		$result = $this->mysqli->query($query);
 
 		while ($row = $result->fetch_assoc())
@@ -51,6 +57,28 @@ class Database{
 			echo $this->mysqli->error;
 		}
 
+	}
+
+	public function update($table, $id, $data){		
+		$query = "UPDATE $table SET nama='$data[0]', jenkel='$data[1]' WHERE id = $id ";
+		$result = $this->mysqli->query($query);
+
+		if ($result === true) {
+			echo "success";
+		}else{
+			echo $this->mysqli->error;
+		}
+	}
+
+	public function delete($table, $id){
+		$query = "DELETE FROM $table WHERE id = $id ";
+		$result = $this->mysqli->query($query);
+
+		if ($result === true) {
+			echo "success";
+		}else{
+			echo $this->mysqli->error;
+		}
 	}
 
 
